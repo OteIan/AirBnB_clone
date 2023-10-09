@@ -1,5 +1,7 @@
 # AirBnB PROJECT
+
 ## PROJECT TASKS
+
 Each task is linked and will help us to:
 
 - put in place a parent class (called BaseModel) to take care of the initialization
