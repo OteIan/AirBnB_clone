@@ -17,7 +17,6 @@ class BaseModel:
     """
     def __init__(self, *args, **kwargs):
         """
-        Class constructor
 
         Initializes the id, created_at, and updated_at attributes.
         """
