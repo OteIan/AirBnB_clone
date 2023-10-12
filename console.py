@@ -1,10 +1,13 @@
 import cmd
 from models.basemodel import BaseModel
 from models.__init__ import storage
-
+"""
+This module creates a command interpreter providing a CLI
+"""
 
 class HBNBCommand(cmd.Cmd):
     """
+    This class defines a command interpreter
     """
     prompt = "(hbnb) "
 
@@ -17,11 +20,11 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
-        """ """
+        """Handle the empty line case"""
         pass
 
     def do_create(self, arg):
-        """"""
+        """Create a new instance"""
         if not arg:
             print("** class name missing **")
         elif arg != "BaseModel":
@@ -32,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_class.id)
 
     def do_show(self, arg):
-        """"""
+        """Display attributes of an instance"""
         args = arg.split()
         if not args:
             print("** class name missing **")
@@ -50,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_destroy(self, arg):
-        """ """
+        """Delete an instance"""
         args = arg.split()
         if not args:
             print("** class name missing **")
@@ -67,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, arg):
-        """"""
+        """Display all the instances with the attributes"""
         args = arg.split()
         all_obj = storage.all()
         obj_list = []
@@ -86,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
                 print(obj_list)
 
     def do_update(self, arg):
-        """ """
+        """Add a new attribute to an existing instance"""
         args = arg.split()
 
         all_obj = storage.all()
