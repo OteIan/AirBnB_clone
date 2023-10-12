@@ -12,6 +12,7 @@ from models.review import Review
 This module creates a command interpreter providing a CLI
 """
 
+
 class HBNBCommand(cmd.Cmd):
     """
     This class defines a command interpreter
@@ -19,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
     class_count = {}
     prompt = "(hbnb) "
     __module_names = \
-        ["BaseModel", "User", "Place", "State", "City", "Amenity" ,"Review"]
+        ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]
 
     def do_quit(self, line):
         """Quit command to exit the program"""
@@ -140,6 +141,7 @@ class HBNBCommand(cmd.Cmd):
             arg = arg.split()
             arg = f"{arg[1]} {arg[0]}"
         return cmd.Cmd.precmd(self, arg)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
