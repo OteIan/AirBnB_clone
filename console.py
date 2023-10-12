@@ -16,6 +16,7 @@ class HBNBCommand(cmd.Cmd):
     """
     This class defines a command interpreter
     """
+    class_count = {}
     prompt = "(hbnb) "
     __module_names = \
         ["BaseModel", "User", "Place", "State", "City", "Amenity" ,"Review"]
@@ -39,7 +40,9 @@ class HBNBCommand(cmd.Cmd):
         elif arg not in HBNBCommand.__module_names:
             print("** class doesn't exist **")
         else:
-            new_class = BaseModel()
+            args = arg.split()
+            class_name = args[0]
+            new_class = globals()[class_name]()
             new_class.save()
             print(new_class.id)
 
@@ -124,6 +127,12 @@ class HBNBCommand(cmd.Cmd):
                 pass
             setattr(obj, args[2], args[3])
             obj.save()
+
+    def do_count(self, arg):
+        """Count the number of instances of a class"""
+        objs = storage.all()
+        obj_names = list(map(lambda obj: type(obj).__name__, objs.values()))
+        print(f"{obj_names.count(arg)}")
 
     def precmd(self, arg):
         if "." in arg:
