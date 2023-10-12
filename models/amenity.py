@@ -4,7 +4,7 @@ This module defines a class that stores name of an amenity
 """
 
 
-class User(BaseModel):
+class Amenity(BaseModel):
     """
     This class stores the name of an amenity and inherits from BaseModel
     Class Attributes:
