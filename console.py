@@ -125,6 +125,12 @@ class HBNBCommand(cmd.Cmd):
             setattr(obj, args[2], args[3])
             obj.save()
 
+    def precmd(self, arg):
+        if "." in arg:
+            arg = arg.replace(".", " ").replace("(", "").replace(")", "")
+            arg = arg.split()
+            arg = f"{arg[1]} {arg[0]}"
+        return cmd.Cmd.precmd(self, arg)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
