@@ -4,7 +4,7 @@ This module defines a class that stores the reviews of a place
 """
 
 
-class State(BaseModel):
+class Review(BaseModel):
     """
     This class stores the name of a state and inherits from BaseModel
     Class Attributes:
