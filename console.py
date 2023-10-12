@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
             else:
                 print("** no instance found **")
-    
+
     def do_all(self, arg):
         """"""
         args = arg.split()
@@ -88,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """ """
         args = arg.split()
-        
+
         all_obj = storage.all()
 
         if not args:
@@ -98,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2:
             print("** instance id missing **")
         elif not (storage.all().get(f"{args[0]}.{args[1]}", None)):
-            print("** no instance found **")            
+            print("** no instance found **")
         elif len(args) < 3:
             print("** attribute name missing **")
         elif len(args) < 4:
@@ -112,7 +112,6 @@ class HBNBCommand(cmd.Cmd):
                 pass
             setattr(obj, args[2], args[3])
             obj.save()
-
 
 
 if __name__ == '__main__':
