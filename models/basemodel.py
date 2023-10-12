@@ -11,17 +11,25 @@ for the other classes in the application
 
 class BaseModel:
     """
-    Base model that will act as the base class
-    Takes in kwargs specified by the user
-    Attributes default values:
+    Base model that serves as the foundation of the other classes
+
+    Attributes:
         id (str): Unique ID associated with an instance
         created_at (datetime): time the instance was created
         updated_at (datetime): time the instance was updated
     """
     def __init__(self, *args, **kwargs):
         """
-        Class constructor
-        Initializes the id, created_at, and updated_at attributes.
+        Initializes a BaseModel instance
+
+        Args:
+            *args: Variable-length positional arguments (not used).
+            **kwargs: Variable-length keyword arguments specified by the user.
+
+        Attributes:
+            id (str): Unique ID associated with an instance
+            created_at (datetime): time the instance was created
+            updated_at (datetime): time the instance was updated
         """
         format = '%Y-%m-%dT%H:%M:%S.%f'
         if kwargs:
@@ -43,7 +51,8 @@ class BaseModel:
 
     def __str__(self):
         """
-        User friendly representation of the instance
+        Gets User friendly representation of the instance
+
         Returns:
             str: String representation of the instance
         """
@@ -52,7 +61,7 @@ class BaseModel:
 
     def save(self):
         """
-        Updates the updated_at attriute to current time
+        Updates the 'updated_at' attriute to current time
         """
         self.updated_at = datetime.now()
         models.storage.save()
@@ -60,6 +69,7 @@ class BaseModel:
     def to_dict(self):
         """
         Represent the class in form of a dictionary
+        
         Return:
             dict: dictionary respresentaion
         """
