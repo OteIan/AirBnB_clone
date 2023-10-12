@@ -1,6 +1,7 @@
 import cmd
-from models.basemodel import BaseModel
+from models.base_model import BaseModel
 from models.__init__ import storage
+from models.user import User
 """
 This module creates a command interpreter providing a CLI
 """
@@ -10,6 +11,7 @@ class HBNBCommand(cmd.Cmd):
     This class defines a command interpreter
     """
     prompt = "(hbnb) "
+    __module_names = ["BaseModel", "User"]
 
     def do_quit(self, line):
         """Quit command to exit the program"""
@@ -27,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
         """Create a new instance"""
         if not arg:
             print("** class name missing **")
-        elif arg != "BaseModel":
+        elif arg not in HBNBCommand.__module_names:
             print("** class doesn't exist **")
         else:
             new_class = BaseModel()
@@ -39,7 +41,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if not args:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in HBNBCommand.__module_names:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
@@ -57,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if not args:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in HBNBCommand.__module_names:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
@@ -79,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
             for obj in all_obj.values():
                 obj_list.append(str(obj))
             print(obj_list)
-        elif args[0] != "BaseModel":
+        elif args[0] not in HBNBCommand.__module_names:
             print("** class doesn't exist **")
         else:
             for key, obj in all_obj.items():
@@ -96,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
 
         if not args:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in HBNBCommand.__module_names:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")

@@ -1,5 +1,6 @@
 import json
-from models.basemodel import BaseModel
+from models.base_model import BaseModel
+from models.user import User
 """
 This module saves contents of a class onto a file
 """
