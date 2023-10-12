@@ -4,7 +4,7 @@ This module defines a class that stores name of a state
 """
 
 
-class User(BaseModel):
+class State(BaseModel):
     """
     This class stores the name of a state and inherits from BaseModel
     Class Attributes:

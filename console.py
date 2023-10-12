@@ -2,6 +2,12 @@ import cmd
 from models.base_model import BaseModel
 from models.__init__ import storage
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+
 """
 This module creates a command interpreter providing a CLI
 """
@@ -11,7 +17,8 @@ class HBNBCommand(cmd.Cmd):
     This class defines a command interpreter
     """
     prompt = "(hbnb) "
-    __module_names = ["BaseModel", "User"]
+    __module_names = \
+        ["BaseModel", "User", "Place", "State", "City", "Amenity" ,"Review"]
 
     def do_quit(self, line):
         """Quit command to exit the program"""
