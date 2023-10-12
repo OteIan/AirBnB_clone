@@ -4,9 +4,11 @@ from models.basemodel import BaseModel
 This module saves contents of a class onto a file
 """
 
+
 class FileStorage:
     """
-    This class handles saving and loading instances of classes to/from a JSON file.
+    This class handles saving and loading instances of classes
+      to/from a JSON file.
     """
     __file_path = "file.json"
     """
@@ -38,7 +40,8 @@ class FileStorage:
         """
         Serialize and save all instances to the JSON file.
         """
-        objects_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
+        objects_dict = \
+            {key: obj.to_dict() for key, obj in self.__objects.items()}
         with open(self.__file_path, 'w') as file:
             json.dump(objects_dict, file)
 

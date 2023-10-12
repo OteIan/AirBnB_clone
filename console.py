@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import cmd
 
+
 class HBNBCommand(cmd.Cmd):
     """
     """
@@ -9,14 +10,15 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, line):
         """Quit command to exit the program"""
         return True
-    
+
     def do_EOF(self, line):
         """ Exits the program """
         return True
-    
+
     def emptyline(self):
         """ """
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

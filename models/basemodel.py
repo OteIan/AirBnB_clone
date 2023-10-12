@@ -69,7 +69,6 @@ class BaseModel:
     def to_dict(self):
         """
         Represent the class in form of a dictionary
-        
         Return:
             dict: dictionary respresentaion
         """
