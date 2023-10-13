@@ -134,12 +134,15 @@ class HBNBCommand(cmd.Cmd):
         objs = storage.all()
         obj_names = list(map(lambda obj: type(obj).__name__, objs.values()))
         print(f"{obj_names.count(arg)}")
-
+        
     def precmd(self, arg):
-        if "." in arg:
-            arg = arg.replace(".", " ").replace("(", "").replace(")", "")
-            arg = arg.split()
-            arg = f"{arg[1]} {arg[0]}"
+        if "." in arg and "(" in arg and ")" in arg:
+            import re
+            match = re.match(r"([A-Za-z_]\w*)\.([A-Za-z_]\w*)\((.*)\)", arg)
+            if match:
+                class_name, command, id = match.groups()
+                id = id.strip('\'"')
+                return f"{command} {class_name} {id} "
         return cmd.Cmd.precmd(self, arg)
 
 
