@@ -28,9 +28,9 @@ class TestFileStorage(unittest.TestCase):
         """
         Set up a new instance of FileStorage before each test.
         """
-        self.file_storage = FileStorage()
+        storage = FileStorage()
 
-    def tearDown(self) -> None:
+    def tearDown(self):
         try:
             os.remove("file.json")
         except:
@@ -45,12 +45,15 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsNotNone(FileStorage.save.__doc__)
         self.assertIsNotNone(FileStorage.reload.__doc__)
         
+    def test_initial_list_is_empty(self):
+        """"""
+        self.assertEqual(len(storage.all()), 0)
 
     def test_all_method_returns_dictionary(self):
         """
         Test if the all method returns a dictionary.
         """
-        all_objects = self.file_storage.all()
+        all_objects = storage.all()
         self.assertIsInstance(all_objects, dict)
 
     def test_new_method_adds_to_objects(self):
@@ -58,29 +61,28 @@ class TestFileStorage(unittest.TestCase):
         Test if the new method adds an object to the __objects dictionary.
         """
         user = User()
-        self.file_storage.new(user)
-        self.assertIn('User.{}'.format(user.id), self.file_storage.all())
+        storage.new(user)
+        self.assertIn(f'User.{user.id}', storage.all())
 
     def test_save_method_creates_json_file(self):
         """
         Test if the save method creates a JSON file.
         """
-        self.file_storage.save()
-        self.assertTrue(os.path.isfile(FileStorage._FileStorage__file_path))
-        os.remove(FileStorage._FileStorage__file_path)
+        new = BaseModel()
+        storage.save()
+        self.assertTrue(os.path.exists("file.json"))
 
     def test_reload_method_loads_objects_from_json(self):
         """
         Test if the reload method loads objects
           from a JSON file into __objects.
         """
-        user = User()
-        self.file_storage.new(user)
-        self.file_storage.save()
+        new = BaseModel()
+        storage.save()
         storage.reload()
-        all_objects = storage.all()
-        self.assertIn('User.{}'.format(user.id), all_objects)
-        os.remove(FileStorage._FileStorage__file_path)
+        for obj in storage.all().values():
+            loaded = obj
+        self.assertEqual(new.to_dict()['id'], loaded.to_dict()['id'])
 
 
 if __name__ == '__main__':
