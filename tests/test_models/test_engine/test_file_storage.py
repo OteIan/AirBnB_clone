@@ -28,9 +28,13 @@ class TestFileStorage(unittest.TestCase):
         """
         Set up a new instance of FileStorage before each test.
         """
-        storage = FileStorage()
+        self.file_storage = FileStorage()
+        self.file_storage.reload()
 
     def tearDown(self):
+        """
+        Remove the JSON file after the test
+        """
         try:
             os.remove("file.json")
         except:
@@ -80,8 +84,8 @@ class TestFileStorage(unittest.TestCase):
         new = BaseModel()
         storage.save()
         storage.reload()
-        for obj in storage.all().values():
-            loaded = obj
+        loaded = storage.all().get(f"{BaseModel.__name__}.{new.id}")
+        self.assertIsNotNone(loaded)
         self.assertEqual(new.to_dict()['id'], loaded.to_dict()['id'])
 
 
