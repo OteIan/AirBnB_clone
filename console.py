@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import cmd
 import re
 from models.base_model import BaseModel

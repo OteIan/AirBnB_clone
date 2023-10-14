@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from models.base_model import BaseModel
 """
 This module defines a class that stores name of an amenity
