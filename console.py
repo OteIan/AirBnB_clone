@@ -14,7 +14,6 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-
 class HBNBCommand(cmd.Cmd):
     """
     This class defines a command interpreter
@@ -39,7 +38,6 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         """
         Create a new instance
-        
         Args:
             arg (str): Command passed into the interpreter
         """
@@ -57,7 +55,6 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """
         Display attributes of an instance
-        
         Args:
             arg (str): Command passed into the interpreter
         """
@@ -80,7 +77,6 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """
         Delete an instance
-        
         Args:
             arg (str): Command passed into the interpreter
         """
@@ -102,7 +98,6 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """
         Display all the instances with the attributes
-        
         Args:
             arg (str): Command passed into the interpreter
         """
@@ -126,7 +121,6 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """
         Add a new attribute to an existing instance
-        
         Args:
             arg (str): Command passed into the interpreter
         """
@@ -158,18 +152,16 @@ class HBNBCommand(cmd.Cmd):
 
     def do_count(self, arg):
         """Count the number of instances of a class
-        
         Args:
             arg (str): Command passed into the interpreter
         """
         objs = storage.all()
         obj_names = list(map(lambda obj: type(obj).__name__, objs.values()))
         print(f"{obj_names.count(arg)}")
-        
+
     def precmd(self, arg):
         """
         Intercepts the command before it is invoked
-        
         Args:
             arg (str): Command passed into the interpreter
         """
