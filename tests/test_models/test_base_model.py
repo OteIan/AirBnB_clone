@@ -8,6 +8,7 @@ from datetime import datetime
 from models import storage
 from os.path import isfile
 
+
 class TestBaseModel(unittest.TestCase):
     """
     Test case class for the BaseModel class.
@@ -83,6 +84,7 @@ class TestBaseModel(unittest.TestCase):
         for obj_id in all_objs.keys():
             obj = all_objs[obj_id]
         self.assertTrue(obj)
+
 
 if __name__ == '__main__':
     unittest.main()
