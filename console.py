@@ -1,4 +1,5 @@
 import cmd
+import re
 from models.base_model import BaseModel
 from models.__init__ import storage
 from models.user import User
@@ -35,7 +36,12 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """Create a new instance"""
+        """
+        Create a new instance
+        
+        Args:
+            arg (str): Command passed into the interpreter
+        """
         if not arg:
             print("** class name missing **")
         elif arg not in HBNBCommand.__module_names:
@@ -48,7 +54,12 @@ class HBNBCommand(cmd.Cmd):
             print(new_class.id)
 
     def do_show(self, arg):
-        """Display attributes of an instance"""
+        """
+        Display attributes of an instance
+        
+        Args:
+            arg (str): Command passed into the interpreter
+        """
         args = arg.split()
         if not args:
             print("** class name missing **")
@@ -66,7 +77,12 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_destroy(self, arg):
-        """Delete an instance"""
+        """
+        Delete an instance
+        
+        Args:
+            arg (str): Command passed into the interpreter
+        """
         args = arg.split()
         if not args:
             print("** class name missing **")
@@ -83,7 +99,12 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, arg):
-        """Display all the instances with the attributes"""
+        """
+        Display all the instances with the attributes
+        
+        Args:
+            arg (str): Command passed into the interpreter
+        """
         args = arg.split()
         all_obj = storage.all()
         obj_list = []
@@ -102,7 +123,12 @@ class HBNBCommand(cmd.Cmd):
                 print(obj_list)
 
     def do_update(self, arg):
-        """Add a new attribute to an existing instance"""
+        """
+        Add a new attribute to an existing instance
+        
+        Args:
+            arg (str): Command passed into the interpreter
+        """
         args = arg.split()
 
         all_obj = storage.all()
@@ -130,19 +156,28 @@ class HBNBCommand(cmd.Cmd):
             obj.save()
 
     def do_count(self, arg):
-        """Count the number of instances of a class"""
+        """Count the number of instances of a class
+        
+        Args:
+            arg (str): Command passed into the interpreter
+        """
         objs = storage.all()
         obj_names = list(map(lambda obj: type(obj).__name__, objs.values()))
         print(f"{obj_names.count(arg)}")
         
     def precmd(self, arg):
+        """
+        Intercepts the command before it is invoked
+        
+        Args:
+            arg (str): Command passed into the interpreter
+        """
         if "." in arg and "(" in arg and ")" in arg:
-            import re
             match = re.match(r"([A-Za-z_]\w*)\.([A-Za-z_]\w*)\((.*)\)", arg)
             if match:
                 class_name, command, id = match.groups()
                 id = id.strip('\'"')
-                return f"{command} {class_name} {id} "
+                arg = f"{command} {class_name} {id}"
         return cmd.Cmd.precmd(self, arg)
 
 
