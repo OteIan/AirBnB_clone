@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-Initialization for the package
+"""Initialization for the package
 """
 from models.engine.file_storage import FileStorage
 
