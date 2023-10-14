@@ -12,7 +12,7 @@ This module saves contents of a class onto a file
 """
 
 
-class FileStorage:
+class FileStorage():
     """
     This class handles saving and loading instances of classes
       to/from a JSON file.
