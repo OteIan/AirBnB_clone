@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-This module defines a base model class
+"""This module defines a base model class
 for the other classes in the application
 """
 import uuid
@@ -9,8 +8,7 @@ from datetime import datetime
 
 
 class BaseModel():
-    """
-    Base model that serves as the foundation of the other classes
+    """Base model that serves as the foundation of the other classes
 
     Attributes:
         id (str): Unique ID associated with an instance
@@ -18,8 +16,7 @@ class BaseModel():
         updated_at (datetime): time the instance was updated
     """
     def __init__(self, *args, **kwargs):
-        """
-        Initializes a BaseModel instance
+        """Initializes a BaseModel instance
 
         Args:
             *args: Variable-length positional arguments (not used).
@@ -50,8 +47,7 @@ class BaseModel():
             models.storage.new(self)
 
     def __str__(self):
-        """
-        Gets User friendly representation of the instance
+        """Gets User friendly representation of the instance
 
         Returns:
             str: String representation of the instance
@@ -60,15 +56,13 @@ class BaseModel():
         return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
 
     def save(self):
-        """
-        Updates the 'updated_at' attriute to current time
+        """Updates the 'updated_at' attriute to current time
         """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """
-        Represent the class in form of a dictionary
+        """Represent the class in form of a dictionary
         Return:
             dict: dictionary respresentaion
         """
