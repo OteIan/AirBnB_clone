@@ -24,12 +24,17 @@ class TestFileStorage(unittest.TestCase):
     This class contains unit tests
       for various methods of the FileStorage class.
     """
-
     def setUp(self):
         """
         Set up a new instance of FileStorage before each test.
         """
         self.file_storage = FileStorage()
+
+    def tearDown(self) -> None:
+        try:
+            os.remove("file.json")
+        except:
+            pass
 
     def test_docsrings(self):
         """Test for module, class and function docstrings"""
