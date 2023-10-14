@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+This module creates a command interpreter providing a CLI
+"""
 import cmd
 import re
 from models.base_model import BaseModel
@@ -10,9 +13,6 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 
-"""
-This module creates a command interpreter providing a CLI
-"""
 
 
 class HBNBCommand(cmd.Cmd):
