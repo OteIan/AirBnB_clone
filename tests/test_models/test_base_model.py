@@ -33,7 +33,7 @@ class TestBaseModel(unittest.TestCase):
         """ """
         try:
             os.remove("file.json")
-        except:
+        except Exception:
             pass
 
     def test_attributes(self):
@@ -84,7 +84,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(self.base_model().id, str)
 
     def test_created_at_and_updated_at(self):
-        """Test if created_at and updated_at attributes are instances of datetime.
+        """
+        Test if created_at and updated_at attributes are instances of datetime
         """
         self.assertIsInstance(self.base_model().created_at, datetime)
         self.assertIsInstance(self.base_model().updated_at, datetime)
@@ -114,7 +115,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(original_updated_at, base_model.updated_at)
 
     def test_to_dict_method(self):
-        """Test if the to_dict method returns a dictionary with the correct keys.
+        """
+        Test if the to_dict method returns a dictionary with the correct keys
         """
         obj_dict = self.base_model().to_dict()
         self.assertIsInstance(obj_dict, dict)

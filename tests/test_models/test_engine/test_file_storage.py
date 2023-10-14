@@ -37,7 +37,7 @@ class TestFileStorage(unittest.TestCase):
         """
         try:
             os.remove("file.json")
-        except:
+        except Exception:
             pass
 
     def test_docsrings(self):
@@ -48,7 +48,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsNotNone(FileStorage.new.__doc__)
         self.assertIsNotNone(FileStorage.save.__doc__)
         self.assertIsNotNone(FileStorage.reload.__doc__)
-        
+
     def test_initial_list_is_empty(self):
         """"""
         self.assertEqual(len(storage.all()), 0)
