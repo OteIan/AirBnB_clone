@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Test cases for basemodel module
+Test cases for basemodel
 """
 import unittest
 from models.base_model import BaseModel
