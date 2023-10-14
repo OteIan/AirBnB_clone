@@ -1,12 +1,12 @@
 #!/usr/bin/python3
+"""
+Test cases for basemodel
+"""
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
 from models import storage
 from os.path import isfile
-"""
-Test cases for basemodel
-"""
 
 class TestBaseModel(unittest.TestCase):
     """
