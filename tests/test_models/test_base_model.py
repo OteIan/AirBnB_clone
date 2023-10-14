@@ -1,12 +1,13 @@
 #!/usr/bin/python3
+"""
+Test cases for basemodel module
+"""
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
 from models import storage
 from os.path import isfile
-"""
-Test cases for basemodel
-"""
+
 
 class TestBaseModel(unittest.TestCase):
     """
@@ -83,6 +84,7 @@ class TestBaseModel(unittest.TestCase):
         for obj_id in all_objs.keys():
             obj = all_objs[obj_id]
         self.assertTrue(obj)
+
 
 if __name__ == '__main__':
     unittest.main()
