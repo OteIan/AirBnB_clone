@@ -5,6 +5,7 @@ Test cases for filestorage
 import unittest
 import os
 import json
+import models.engine.file_storage as file_storage
 from models.base_model import BaseModel
 from models.user import User
 from models.amenity import Amenity
@@ -29,6 +30,16 @@ class TestFileStorage(unittest.TestCase):
         Set up a new instance of FileStorage before each test.
         """
         self.file_storage = FileStorage()
+
+    def test_docsrings(self):
+        """Test for module, class and function docstrings"""
+        self.assertIsNotNone(file_storage.__doc__)
+        self.assertIsNotNone(FileStorage.__doc__)
+        self.assertIsNotNone(FileStorage.all.__doc__)
+        self.assertIsNotNone(FileStorage.new.__doc__)
+        self.assertIsNotNone(FileStorage.save.__doc__)
+        self.assertIsNotNone(FileStorage.reload.__doc__)
+        
 
     def test_all_method_returns_dictionary(self):
         """
