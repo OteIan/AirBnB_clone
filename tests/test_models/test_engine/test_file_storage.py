@@ -52,7 +52,7 @@ class TestFileStorage(unittest.TestCase):
     def test_file_path(self):
         """Checks if __file_path is a string"""
         self.assertIsInstance(storage._FileStorage__file_path, str)
-    
+
     def test_objects(self):
         """Checks if objects is a dictionary"""
         self.assertIsInstance(storage.all(), dict)
