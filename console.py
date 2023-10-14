@@ -24,20 +24,22 @@ class HBNBCommand(cmd.Cmd):
         ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]
 
     def do_quit(self, line):
-        """Quit command to exit the program"""
+        """Quit command to exit the program
+        """
         return True
 
     def do_EOF(self, line):
-        """ Exits the program """
+        """Exits the program
+        """
         return True
 
     def emptyline(self):
-        """Handle the empty line case"""
+        """Handle the empty line case
+        """
         pass
 
     def do_create(self, arg):
-        """
-        Create a new instance
+        """Create a new instance
         Args:
             arg (str): Command passed into the interpreter
         """
@@ -53,8 +55,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_class.id)
 
     def do_show(self, arg):
-        """
-        Display attributes of an instance
+        """Display attributes of an instance
         Args:
             arg (str): Command passed into the interpreter
         """
@@ -75,8 +76,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_destroy(self, arg):
-        """
-        Delete an instance
+        """Delete an instance
         Args:
             arg (str): Command passed into the interpreter
         """
@@ -96,8 +96,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, arg):
-        """
-        Display all the instances with the attributes
+        """Display all the instances with the attributes
         Args:
             arg (str): Command passed into the interpreter
         """
@@ -119,8 +118,7 @@ class HBNBCommand(cmd.Cmd):
                 print(obj_list)
 
     def do_update(self, arg):
-        """
-        Add a new attribute to an existing instance
+        """Add a new attribute to an existing instance
         Args:
             arg (str): Command passed into the interpreter
         """
@@ -160,8 +158,7 @@ class HBNBCommand(cmd.Cmd):
         print(f"{obj_names.count(arg)}")
 
     def precmd(self, arg):
-        """
-        Intercepts the command before it is invoked
+        """Intercepts the command before it is invoked
         Args:
             arg (str): Command passed into the interpreter
         """
