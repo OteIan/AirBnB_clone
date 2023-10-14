@@ -43,15 +43,29 @@ class TestFileStorage(unittest.TestCase):
     def test_docsrings(self):
         """Test for module, class and function docstrings"""
         self.assertIsNotNone(file_storage.__doc__)
-        self.assertIsNotNone(FileStorage.__doc__)
-        self.assertIsNotNone(FileStorage.all.__doc__)
-        self.assertIsNotNone(FileStorage.new.__doc__)
-        self.assertIsNotNone(FileStorage.save.__doc__)
-        self.assertIsNotNone(FileStorage.reload.__doc__)
+        self.assertIsNotNone(self.file_storage.__doc__)
+        self.assertIsNotNone(self.file_storage.all.__doc__)
+        self.assertIsNotNone(self.file_storage.new.__doc__)
+        self.assertIsNotNone(self.file_storage.save.__doc__)
+        self.assertIsNotNone(self.file_storage.reload.__doc__)
+
+    def test_file_path(self):
+        """Checks if __file_path is a string"""
+        self.assertIsInstance(storage._FileStorage__file_path, str)
+    
+    def test_objects(self):
+        """Checks if objects is a dictionary"""
+        self.assertIsInstance(storage.all(), dict)
 
     def test_initial_list_is_empty(self):
-        """"""
+        """ """
         self.assertEqual(len(storage.all()), 0)
+
+    def test_new_object_to___objects(self):
+        """ """
+        new = BaseModel()
+        loaded = storage.all().get(f"{BaseModel.__name__}.{new.id}")
+        self.assertTrue(new is loaded)
 
     def test_all_method_returns_dictionary(self):
         """
@@ -59,6 +73,22 @@ class TestFileStorage(unittest.TestCase):
         """
         all_objects = storage.all()
         self.assertIsInstance(all_objects, dict)
+
+    def test_instantiation_BaseModel(self):
+        """
+        File is not created on instantiation
+        """
+        new = BaseModel()
+        self.assertFalse(os.path.exists("file.json"))
+
+    def test_key_format(self):
+        """Checks if key is in the format: <class name>.<id>"""
+        keys = storage.all().keys()
+        for key in keys:
+            args = key.split('.')
+            self.assertEqual(len(args), 2)
+            class_name, obj_id = args
+            self.assertEqual(key, f"{class_name}.{obj_id}")
 
     def test_new_method_adds_to_objects(self):
         """
@@ -87,6 +117,17 @@ class TestFileStorage(unittest.TestCase):
         loaded = storage.all().get(f"{BaseModel.__name__}.{new.id}")
         self.assertIsNotNone(loaded)
         self.assertEqual(new.to_dict()['id'], loaded.to_dict()['id'])
+
+    def test_reload_from_empty_file(self):
+        """Load from an empty file"""
+        with open("file.json", "w") as file:
+            pass
+        with self.assertRaises(ValueError):
+            storage.reload()
+
+    def test_reload_from_nonexistent(self):
+        """Nothing occurs if the file is not there"""
+        self.assertEqual(storage.reload(), None)
 
 
 if __name__ == '__main__':
