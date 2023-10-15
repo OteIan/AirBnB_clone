@@ -42,7 +42,8 @@ class TestUser(unittest.TestCase):
         """ """
         u = User(email='myemail123@gmail.com', age=9)
         result = []
-        check_list = ['email', 'age', 'id', 'created_at', 'updated_at', '__class__']
+        check_list = \
+            ['email', 'age', 'id', 'created_at', 'updated_at', '__class__']
         for key in u.to_dict():
             result.append(key)
         self.assertListEqual(result, check_list)
@@ -66,7 +67,7 @@ class TestUser(unittest.TestCase):
         for key in u.to_dict():
             result.append(key)
         self.assertListEqual(result, check_list)
-    
+
     def test_str(self):
         """ """
         u = User()

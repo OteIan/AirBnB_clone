@@ -36,7 +36,8 @@ class TestCity(unittest.TestCase):
         """ """
         u = self.city(state_id="Founder", name="Great")
         result = []
-        check_list = ['state_id', 'name', 'id', 'created_at', 'updated_at', '__class__']
+        check_list = \
+            ['state_id', 'name', 'id', 'created_at', 'updated_at', '__class__']
         for key in u.to_dict():
             result.append(key)
         self.assertListEqual(result, check_list)
@@ -53,9 +54,10 @@ class TestCity(unittest.TestCase):
     def test_with_args_and_kwargs(self):
         """ """
         u = self.city(42, "remember", "yesterday", "city",
-                         state_id="Jefferson", name="today")
+                      state_id="Jefferson", name="today")
         result = []
-        check_list = ['state_id', 'name', 'id', 'created_at', 'updated_at', '__class__']
+        check_list = \
+            ['state_id', 'name', 'id', 'created_at', 'updated_at', '__class__']
         for key in u.to_dict():
             result.append(key)
         self.assertListEqual(result, check_list)

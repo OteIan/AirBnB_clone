@@ -53,9 +53,10 @@ class Teststate(unittest.TestCase):
     def test_with_args_and_kwargs(self):
         """ """
         u = self.state(42, "remember", "yesterday", "state",
-                         name="Jefferson", time="today")
+                       name="Jefferson", time="today")
         result = []
-        check_list = ['name', 'time', 'id', 'created_at', 'updated_at', '__class__']
+        check_list = \
+            ['name', 'time', 'id', 'created_at', 'updated_at', '__class__']
         for key in u.to_dict():
             result.append(key)
         self.assertListEqual(result, check_list)

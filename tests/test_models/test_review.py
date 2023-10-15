@@ -27,7 +27,7 @@ class Testreview(unittest.TestCase):
         """ """
         self.assertIsInstance(self.review().place_id, str)
         self.assertIsInstance(self.review().user_id, str)
-        self.assertIsInstance(self.review().text, str)       
+        self.assertIsInstance(self.review().text, str)
 
     def test_str(self):
         """ """
@@ -38,7 +38,9 @@ class Testreview(unittest.TestCase):
         """ """
         u = self.review(place_id="current", user_id="now", text="Founder")
         result = []
-        check_list = ['place_id', "user_id", "text", 'id', 'created_at', 'updated_at', '__class__']
+        check_list = \
+            ['place_id', "user_id", "text", 'id', 'created_at',
+             'updated_at', '__class__']
         for key in u.to_dict():
             result.append(key)
         self.assertListEqual(result, check_list)
@@ -55,9 +57,11 @@ class Testreview(unittest.TestCase):
     def test_with_args_and_kwargs(self):
         """ """
         u = self.review(42, "remember", "yesterday", "review",
-                         place="Jefferson", user_id="now", text="today")
+                        place="Jefferson", user_id="now", text="today")
         result = []
-        check_list = ['place', 'user_id', "text", 'id', 'created_at', 'updated_at', '__class__']
+        check_list = \
+            ['place', 'user_id', "text", 'id', 'created_at',
+             'updated_at', '__class__']
         for key in u.to_dict():
             result.append(key)
         self.assertListEqual(result, check_list)

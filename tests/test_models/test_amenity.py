@@ -55,11 +55,11 @@ class TestAmenity(unittest.TestCase):
         u = self.amenity(42, "remember", "yesterday", "Amenity",
                          name="Jefferson", time="today")
         result = []
-        check_list = ['name', 'time', 'id', 'created_at', 'updated_at', '__class__']
+        check_list = \
+            ['name', 'time', 'id', 'created_at', 'updated_at', '__class__']
         for key in u.to_dict():
             result.append(key)
         self.assertListEqual(result, check_list)
-
 
 
 if __name__ == "__main__":

@@ -163,7 +163,7 @@ class HBNBCommand(cmd.Cmd):
             match = re.match(r"([A-Za-z_]\w*)\.([A-Za-z_]\w*)\((.*)\)", arg)
             if match:
                 class_name, command, args = match.groups()
-                args =  [arg.replace('"', '') for arg in args.split(',')]
+                args = [arg.replace('"', '') for arg in args.split(',')]
                 if command == 'update' and len(args) == 3:
                     id, attribute, value = args
                     return f"{command} {class_name} {id} {attribute} {value}"

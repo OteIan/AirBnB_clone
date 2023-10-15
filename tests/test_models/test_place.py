@@ -35,7 +35,6 @@ class Testplace(unittest.TestCase):
         self.assertIsInstance(self.place().price_by_night, int)
         self.assertIsInstance(self.place().latitude, float)
         self.assertIsInstance(self.place().amenity_ids, str)
-        
 
     def test_str(self):
         """ """
@@ -63,13 +62,13 @@ class Testplace(unittest.TestCase):
     def test_with_args_and_kwargs(self):
         """ """
         u = self.place(42, "remember", "yesterday", "place",
-                         name="Jefferson", time="today")
+                       name="Jefferson", time="today")
         result = []
-        check_list = ['name', 'time', 'id', 'created_at', 'updated_at', '__class__']
+        check_list = \
+            ['name', 'time', 'id', 'created_at', 'updated_at', '__class__']
         for key in u.to_dict():
             result.append(key)
         self.assertListEqual(result, check_list)
-
 
 
 if __name__ == "__main__":
