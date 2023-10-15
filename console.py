@@ -149,10 +149,7 @@ class HBNBCommand(cmd.Cmd):
             obj.save()
 
     def do_count(self, arg):
-        """Count the number of instances of a class
-        Args:
-            arg (str): Command passed into the interpreter
-        """
+        """Count the number of instances of a class"""
         objs = storage.all()
         obj_names = list(map(lambda obj: type(obj).__name__, objs.values()))
         print(f"{obj_names.count(arg)}")
@@ -165,9 +162,16 @@ class HBNBCommand(cmd.Cmd):
         if "." in arg and "(" in arg and ")" in arg:
             match = re.match(r"([A-Za-z_]\w*)\.([A-Za-z_]\w*)\((.*)\)", arg)
             if match:
-                class_name, command, id = match.groups()
-                id = id.strip('\'"')
-                arg = f"{command} {class_name} {id}"
+                class_name, command, args = match.groups()
+                args =  [arg.replace('"', '') for arg in args.split(',')]
+                if command == 'update' and len(args) == 3:
+                    id, attribute, value = args
+                    return f"{command} {class_name} {id} {attribute} {value}"
+                elif len(args) == 1:
+                    id = args[0].replace('"', '')
+                    return f"{command} {class_name} {id}"
+                else:
+                    return f"{command} {class_name} "
         return cmd.Cmd.precmd(self, arg)
 
 
