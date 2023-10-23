@@ -15,6 +15,7 @@
     width: 25%;
     line-height: 20px;
     cursor: pointer;
+
 }
 
 .locations {
@@ -74,6 +75,7 @@ h4 {
 .popover {
     list-style-type: none;
     display: none;
+    position: relative;
     background-color: #fafafa;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -85,5 +87,10 @@ h4 {
 
 .locations:hover .popover,
 .amenities:hover .popover {
-    display: block;
+    display: inline-block;
+}
+
+.locations:hover,
+.amenities:hover {
+    background-color: rgba(255, 90, 96, 0.029);
 }
