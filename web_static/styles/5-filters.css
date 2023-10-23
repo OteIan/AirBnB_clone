@@ -6,21 +6,17 @@
     border-radius: 4px;
 }
 
-.locations {
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-    width: 25%;
-    margin-left: 45px;
-    border-right: 1px solid #ddd;
-}
-
+.locations,
 .amenities {
     display: inline-block;
     vertical-align: middle;
     height: 100%;
     width: 25%;
     margin-left: 45px;
+}
+
+.locations {
+    border-right: 1px solid #ddd;
 }
 
 h3 {
